@@ -115,7 +115,7 @@ router.get('/chome', (req, res) => {
 	
 	date1 = day + "/" + month + "/" + year;
 	
-    // delMan = "Steven"
+    
     orderDs.findAll({
         include: [{model : stockRec,}, {model: payments, where:{deldate: date1}}],
 

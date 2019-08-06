@@ -262,9 +262,9 @@ router.get('/tomorrow', (req, res) => {
 	// date3 = tmr2 + "/" + month + "/" + year;
 	// date4 = tmr3 + "/" + month + "/" + year;
     // date5 = tmr4 + "/" + month + "/" + year;
-    delMan = "Steven"
+
     orderDs.findAll({
-        include: [{model : stockRec,}, {model: payments, where:{deldate: date2, delMan:delMan}}],
+        include: [{model : stockRec,}, {model: payments, where:{deldate: date2}}],
 
     }).then((order) => {
         payments.findAll({

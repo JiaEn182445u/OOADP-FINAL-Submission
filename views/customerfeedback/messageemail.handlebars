@@ -1,0 +1,238 @@
+<link rel="stylesheet" href="/css/cstyle.css">
+
+
+<script>
+
+//function showPCode() {
+  //  {{!-- var node = document.getElementById('productcode')
+    //var visibility = node.style.visibility;
+    //node.style.visibility = visibility == "visible" ? 'hidden' : "visible" --}}
+//}
+
+function showPCode(){
+if (document.getElementById('Product').checked) {
+        document.getElementById('productcodebox').style.display = 'block';
+    } else {
+        document.getElementById('productcodebox').style.display = 'none';
+    }
+}
+
+function showNoPCode(){
+if (document.getElementById('Service').checked) {
+        document.getElementById('productcodebox').style.display = 'none';
+    } else {
+        document.getElementById('productcodebox').style.visibility = 'none';
+    }
+}
+//function showNoPCode(){
+	//var node = document.getElementById('productcode')
+    //var visibility = node.style.visibility;
+    //node.style.visibility = visibility == "hidden" ? 'visible' : "hidden"
+//}
+</script>
+
+{{!-- {{#if order}}
+mwhaha
+				<script>
+					var listname=[];
+					var listid=[];
+					</script>
+				{{#each order}}
+				
+				<script>
+					alert({{form.itemName}});
+					alert("hi it's me");
+					if(listname=[]){
+						listname.push({{form.itemName}});
+						listid.push({{form.id}});
+
+					}
+					var add=true;
+					for(var i=0;i<listname.length;i++){
+						
+							if({{form.itemName}}==listname[i]){
+								add=false;
+
+							}
+					
+						}
+						if(add==true){
+							listname.push({{form.itemName}});
+						listid.push({{form.id}});
+						}
+					}
+					
+
+					</script> --}}
+
+				{{!-- <option value={{form.id}}>{{form.itemName}}</option> --}}
+				{{!-- {{/each}}
+				{{/if}}
+				<script>
+					for(var c=0;c<listname.length;c++){
+					var selecting=document.createElement("option");
+  					selecting.setAttribute("value",listid[c]);
+					selecting.innerText=listname[c];
+					var here=document.getElementById("itisforproudectcode");
+					 here.appendChild(selecting);
+					}
+					
+
+					</script> --}}
+<script>
+
+function checkingstar(){
+	 if(document.forms["customerfeedbackformm"]["5"].checked==false){
+	 if(document.forms["customerfeedbackformm"]["4"].checked==false){
+		 if(document.forms["customerfeedbackformm"]["3"].checked==false){
+		  if(document.forms["customerfeedbackformm"]["2"].checked==false){
+		 if(document.forms["customerfeedbackformm"]["1"].checked==false){
+		
+		 document.getElementById("appearstar").style.display = "block";
+			return false;
+			}}}
+	 }
+
+ }
+}
+
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="/css/cstyle.css">
+<h3 id="feedbacktitle">Customer's Feedback</h3>
+<br>
+<div class="container">
+	<div class="feedbackbox">
+
+
+<form action="../feedbackk/messageemailsend" method="post" onsubmit="return checkingstar()" id="customerfeedbackformm">
+
+<label class="font-italic" id="forrate"for="rate">Rating:</label><br>
+<p class="font-weight-bold text-info" id="appearstar" style="display:none">
+                            Please rate your experience/product.
+                        </p>
+<br>
+<div class="rate">
+	
+	{{!-- <p>Rating</p> --}}
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+	<input type="file" id="posterUpload" name="posterUpload" accept="image/png,image/jpeg,image/jpg,image/gif"> 
+
+<img id="poster" src="/img/no-image.jpg" alt="" class="border img-thumbnail img-fluid"
+                        style="height:70%;width:70%">
+    {{!—- Hidden field to submit URL of poster to the server --}}
+<input id="posterURL" type="hidden" name="posterURL">
+{{!-- Practical 10 Exercise 01 --}}
+<div class="font-weight-bold text-danger small" id="posterErr" style="display:none"></div>
+
+		{{!-- {{#if user}} --}}
+		<div class="form-group">
+			<label class="font-italic" for="emailfeedback">Email:</label><br>
+			<textarea class="feedbackuseremail" id="emailfeedback" name="emailfeedback" rows="1" cols="5" readonly="readonly">{{user.email}}</textarea>
+		</div>
+		
+				<div class="form-check form-check-inline">
+						<label class="font-italic" for="PorS">About Service or Product:</label><br>
+							<input class="form-check-input" onclick="javascript:showNoPCode()" type="radio" id="Service" value="Service" name="PorS" checked><br>
+							<label class="form-check-label" for="Service">Service</label><br>
+							<input class="form-check-input" onclick="javascript:showPCode();" type="radio" id="Product" value="Product" name="PorS"><br>
+							<label class="form-check-label" for="Product">Product</label><br>
+						</div>
+						
+	<div  id="productcodebox" style="display: none;">
+			<label class="font-italic" for="productcode">product Name:</label><br>
+			<select id="itisforproudectcode" name="productcode">
+				{{#if order}}
+				{{#each order}}
+				
+				<option value={{stockrec.id}}>Name:{{stockrec.itemName}} <br>        
+				<p style="color:green;">Product Code:{{stockrec.itemCode}} </p> 
+					 </option>
+				{{/each}}
+				{{/if}}
+</select>
+				{{!-- {{#if order}}
+				<script>
+					var listname=[];
+					var listid=[];
+					</script>
+				{{#each order}}
+				<script>
+					alert({{form.itemName}});
+					alert("hi it's me");
+					if(listname=[]){
+						listname.push({{form.itemName}});
+						listid.push({{form.id}});
+
+					}
+					var add=true;
+					for(var i=0;i<listname.length;i++){
+						
+							if({{form.itemName}}==listname[i]){
+								add=false;
+
+							}
+					
+						}
+						if(add==true){
+							listname.push({{form.itemName}});
+						listid.push({{form.id}});
+						}
+					}
+					
+
+					</script> --}}
+
+				{{!-- <option value={{form.id}}>{{form.itemName}}</option> --}}
+				{{!-- {{/each}}
+				{{/if}}
+				 --}}
+				{{!-- <script>
+					var list=[];
+					for(var i=0;i<order.length;i++){
+						list.append(form.itemName[i]);
+					}
+				</script> --}}
+
+   
+ 
+			{{!-- <textarea class="feedbackformsmall" id="productcode" name="productcode" rows="1" cols="5">{{productcode}}</textarea> --}}
+		</div>
+		
+           <br><br>
+					 <label class="font-italic" for="DropdownSType">Subject</label><br>
+<select name="DropdownSType" >
+    <option value="Complaint">Complaint</option>
+    <option value="Query">Query</option>
+		<option value="Compliment">Compliment</option>
+		<option value="Improvement">Improvement</option>
+		<option value="Others">Others</option>
+</select>
+
+
+  <br><br>
+				<label class="font-italic" for="Message">Message</label>
+				<textarea class="feedbackformbig" id="story" name="Message" rows="7">{{Message}}</textarea>
+		</div>
+
+			<br>
+			<button class="addfeedback" type="submit" class="btn btn-primary">Send
+			</button>
+		</form>
+	</div>
+</div>
+

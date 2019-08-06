@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/cstyle.css">
+<h3 id="feedbacktitle">Your Cart</h3>
+<div class="otheronlycenter">
+{{#if cart}}
+
+<ul>
+    {{#each cart}}
+          <li class="itemboxcart">
+<img src="{{stockrec.posterURL}}" alt="Poster unavailable"  class="cartpic">
+             <div class="allitemorderdetail">
+{{stockrec.itemName}}
+${{stockrec.price}}
+<p class="quantityincart">
+X{{quantity}}</p>
+</div>
+Remarks:
+<div class="price">
+<a href="../shopping/addtowishlistt/{{id}}" >Add To Wishlist    </a>  
+<a href="../shopping/deletecart/{{id}}" id='cart-item-remove' class="cart-item-remove">
+<i class="fas fa-trash"></i></a>
+
+</div>
+{{#if remark}}
+<div class="remarkincart">
+{{remark}}
+</div>
+{{else}}
+<div class="remarkincart">
+No remarks
+</div>
+{{/if}}
+<br>
+    </li>
+
+{{/each}}
+</ul>
+</div>
+<p id="displaytotalprice">Total:${{Rtotal}}</p>
+{{else}}
+<p style="text-align:center;">There is nothing in your cart.</p>
+{{/if}}
+{{#if cart}}
+<a class="addfeedback" href="../shopping/paymenttype">Pay</a>
+{{/if}}

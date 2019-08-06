@@ -1,0 +1,60 @@
+<body>
+{{#if order}}
+{{!-- {{#each order}} --}}
+<div class="container" style="text-align: center; border: 1px solid orange;">
+    <br><br>
+    <p>Address:</p> <input style="border: 1px solid black;  height: 10%; font-size: 1.5em; text-align: center;" value='{{order.payment.payaddress}}'>
+    <br><br>
+    <p>Postal Code: </p><input style="border: 1px solid black;height: 10%; font-size: 1em; text-align: center;" value='{{order.payment.paypostalC}}'>
+    <br><br>
+    <p>Order No.: </p> <input style="border: 1px solid black; height: 10%; font-size: 1em; text-align: center;" value='{{order.orderid}}'>
+    <br><br>
+    <p>Customer's Name: </p><input style="border: 1px solid black;  height: 10%; font-size: 1em; text-align: center;" value ='{{order.payment.payname}}'>
+    <br><br>
+    <p>Customer's Contact: </p><input style="border: 1px solid black;  height: 10%; font-size: 1em; text-align: center;" value='{{order.payment.paycontact}}'>
+    <br><br>
+    <p>Payment Type: </p><input style="border: 1px solid black; height: 10%; font-size: 1em; text-align: center;" value= '{{order.payment.CorCC}}'>
+    <br><br>
+    <p>Cash to receive: </p><input style="border: 1px solid black; height: 10%; font-size: 1em; text-align: center;" value='{{order.payment.totalamount}}'>
+<br><br><br>
+
+<div>
+    {{!-- <label>Handed to Customer : </label><input id="reason" type="radio" value="customer" >          
+    <label>Left at location : </label><input id="reason" type="radio" value="location">           
+    <label>Others : </label><textarea></textarea> --}}
+
+     <select class="" id="reason" name="reason" style="width: 10em; " onchange="select()">{{!--value='{{delMan}}'--}}
+                    <option class="" value="customer">Handed to Customer</option>
+                    <option class="" value="location">Left at location</option>
+                    {{!-- <option class="" value="others">Others</option> --}}
+                </select>
+                {{!-- <textarea id="change"/> --}}
+<br><br><br>
+</div>
+
+<button onclick="myFunction()" id="delivered">Delivered!</button>
+<br><br>
+</div>
+<br><br><br>
+
+
+<script>
+ function myFunction(){
+     theId = '{{payment.id}}'
+     console.log(theId);
+     location.replace("/main_s/destroy/" + '{{order.payment.id}}')
+ }
+</script>
+{{!-- {{/each}} --}}
+{{else}}
+<h1 style="text-align: center; margin-top:15%;">There are no deliveries </h1>
+<br><br><br>
+<button style="margin-left: 45%" onclick="myFunction()">Back to Home</button>
+
+<script>
+    function myFunction(){
+        window.location.href = "/main_s/home";
+    }
+</script>
+{{/if}}
+</body>

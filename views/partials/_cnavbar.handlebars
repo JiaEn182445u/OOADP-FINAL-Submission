@@ -1,0 +1,78 @@
+
+<link rel="stylesheet" href="/css/cstyle.css">
+<nav class="navbar navbar-expand-sm navbar-dark  mb-3 cnavbar">
+	<div class="container">
+		<a class="navbar-brand" href="/">Zalora</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+				  aria-expanded="false"
+				  aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				{{!-- <li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about">About</a>
+				</li> --}}
+				{{!-- <li class="nav-item">
+					<a class="nav-link" href="../shopping/shop">Store</a>
+				</li> --}}
+				{{!-- <li class="nav-item">
+					<a class="nav-link" href="../feedback/messageemail">Message</a>
+				</li> --}}
+				
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				{{#if user}}
+				<li class="nav-item">
+					<a class="nav-link" href="/shopping/shop">Store</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/feedback/messageemail">Send Feedback</a>
+				</li>
+				
+		  <li class="nav-item">
+						<a href="/shopping/cartfull" class="nav-link"> 
+						<span class="cart-info__icon mr-lg-3"><i class="fas fa-shopping-cart"></i></span>Cart</a>
+					</li>
+					<li class="nav-item">
+						<a href="/shopping/wishlist" class="nav-link">WishList</a>
+					</li>
+						{{!-- <li class="nav-item">
+						<a href="../shopping/paymenttype" class="nav-link">Payment</a>
+					</li> --}}
+					{{!-- {{#if user.profileURL}}
+						<li class="nav-item">
+						<img class="narprofile" src="{{user.profileURL}}"></li>
+						<li class="nav-item"></li>
+						{{else}}
+						<li class="nav-item">
+						<img class="narprofile" src="img/profile.png"></li>
+						<li class="nav-item"></li>
+						{{/if}} --}}
+						<a href="/cuser/profile/{{user.id}}" class="nav-link">Profile</a>
+					</li>
+					
+					<li class="nav-item">
+						<a href="/logout" class="nav-link">Logout</a>
+					</li>
+					
+
+
+
+
+					
+				{{else}}
+					<li class="nav-item">
+						<a href="/cLogin" class="nav-link">Login</a>
+					</li>
+					<li class="nav-item">
+						<a href="/cRegister" class="nav-link">Register</a>
+					</li>
+				{{/if}}
+			</ul>
+		</div>
+	</div>
+</nav>

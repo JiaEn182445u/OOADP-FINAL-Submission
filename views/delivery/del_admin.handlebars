@@ -1,0 +1,83 @@
+<link rel="stylesheet" type="text/css" href="/css/del_admin.css">
+
+<body>
+
+    <body onload="show()"></body>
+    <div>
+        <br><br><br>
+        
+
+        <h1>Delivery Schedule</h1>
+
+        
+        <br>
+        <select class="region" name="" id="selectFilter" onchange="myFunction()">
+            <option class="regionPick" id="" value="all" selected>All Regions</option>
+            <option class="regionPick" id="" value="East">East</option>
+            <option class="regionPick" id="" value="North">North</option>
+            <option class="regionPick" id="" value="North-East">North-East</option>
+            <option class="regionPick" id="" value="West">West</option>
+            <option class="regionPick" id="" value="Central">Central</option>
+        </select>
+        <br><br>
+        
+        {{#if payments}}
+        <table class="adDel" align="center">
+            <tr>
+                <th>No.</th>
+                <th>Date of Delivery</th>
+                <th>Customer Name</th>
+                <th id="bigger">Order No.</th>
+                <th id="bigger">Shipping Address</th>
+                <th id="bigger">Region</th>
+                <th id="pickUpLoc">Pick Up Location</th>
+                <th>Delivery details</th>
+                <th id="bigger">Tracker</th>
+            </tr>
+
+            {{#each payments}}
+            <tr>
+
+                <td>{{id}}</td>
+                <td id='dNt'>{{delDate}}</td>
+                <td>{{payname}}</td>
+                <td>{{id}}</td>
+                <td>{{payaddress}},<p id="postal"></p>Singapore {{paypostalC}}</p>
+                </td>
+                <td>
+                    <p id="region">{{cRegion}}</p>
+                </td>
+                <td id="pickUpLoc">Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr <p>Singapore 533912</p>
+                </td>
+                <td><a href="/main_s/del_details/{{id}}">Approved</a></td>
+                <td>Packing..</td>
+                {{!-- {{/if}} --}}
+
+                {{/each}}
+                {{else}}
+                <table class="adDel">
+                    <div style="font-weight: bold; text-align:center;"> There are no deliveries set for this area</div>
+                </table>
+
+                {{/if}}
+            </tr>
+
+        </table>
+       
+    </div>
+
+    <script>
+        function myFunction() {
+            var e = document.getElementById("selectFilter");
+            var strUser = e.options[e.selectedIndex].value;
+            console.log(strUser, "aye");
+            location.replace("/main_s/delivery/" + strUser)
+        }
+
+        urlNow = window.location.href;
+        urlSplit = urlNow.slice(38);
+        document.getElementById("selectFilter").value = urlSplit;
+
+    </script>
+<br><br><br>
+</body>

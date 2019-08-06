@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/staffRegister.css">
+<div class="row">
+	<div class="col-md-6 mx-auto">
+		<div class="box-container">
+			<h3 class="text-center">Zalora</h3>
+			<form action="../user/register" method="post">
+
+				<div class="form-group">
+					<input type="text" name="staffNo" class="form-control" placeholder = "Staff No" value="{{staffNo}}" required>
+				</div>
+				<div class="form-group">
+					<input type="email" name="email" class="form-control" placeholder = "Email" value="{{email}}" required>
+				</div>
+				<br>
+				{{!-- <a href="/user/register" onclick="myFunction()" type="submit" class="tempPass" id = "tempPass">Get temporary password</a> --}}
+				<br>
+				<br>
+				{{!-- <div class="form-group">
+					<input type="password" name="password" class="form-control" placeholder = "Password" value="{{password}}" id = "password" disabled required>
+				</div> --}}
+				{{!-- <div class="form-group">
+					<input type="password" name="password2" class="form-control" placeholder = "Confirm Password" value="{{password2}}" required>
+				</div> --}}
+				<br>
+				<button type="submit" class="submit">Get Password</button>
+				<br>
+				<br>
+				<a href="/staffLogin" class="nav-link">Login instead?</a>
+				<br>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.getElementById("password").disabled = false;
+	}
+</script>

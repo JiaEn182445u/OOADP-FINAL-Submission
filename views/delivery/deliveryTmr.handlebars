@@ -1,0 +1,117 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/del_admin.css">
+<style>
+  .size{
+    font-size:90%;
+  }
+</style>
+</head>
+
+<body onload='check()'>
+    <br>
+    <h1>Your Deliveries</h1>
+    <br>
+
+    <button onclick="today()">See Today</button>
+
+    <script>
+        function today(){
+            
+        window.location.href = "/main_s/home";
+        }
+    </script>
+
+    <h3 style="text-align: center;">Tomorrow</h3>
+
+
+    <p id="counting" style="text-align: center;"></p>
+    
+        <br>
+
+    <p style="text-align: center;"><b>Pick Up :</b> Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr</p>
+    <p style="text-align: center;">Singapore 533912</p>
+    <br>
+    <table style="margin-left: 25%; font-size: 120%;">
+        {{#if order}}
+        <tr>
+            <th class="size" id="bigger">Order No.</th>
+            <th  class="size" >Customer Name</th>
+            <th  class="size" >Item Name</th>
+            <th  class="size" >Item Description</th>
+            {{!-- <th id="pickUpLdeloc">Pick Up Location</th> --}}
+            <th  class="size" >Number of Items Ordered</th>
+            {{!-- <th  class="size" >Package Collected?</th> --}}
+            {{!-- <th>Ordered Items</th> --}}
+
+        </tr>
+
+        {{#each order}}
+
+        <tr style="width: -50%; text-align:center;" >
+            <td  style="padding: 0.01%;"  id="orderid">{{orderid}}</td>
+            <td>{{payment.payname}}</td>
+            <td style="padding: 0.02%;">{{stockrec.itemName}}</td>
+            <td style="padding: 0.2%;">{{stockrec.description}}</td>
+            {{!-- <td style="padding: 0.2%; " id="pickUpLoc">Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr <p>Singapore 533912</p></td> --}}
+            <td style="padding: 0.01%;">{{oquantity}}</td>
+            {{!-- <td style="padding: 0.01%;"><input name="box" onclick="makeId()" id="checking" type="checkbox" ></td> --}}
+
+            
+
+            {{!-- <td>{{itemid}}</td> --}}
+        </tr>
+        {{/each}}
+            <br><br><br>
+    {{!-- <button style="text-align: center; margin-left: 43%;" onclick="myFunction()">Start Delivering!</button> --}}
+        {{else}}
+        <h2 style="text-align: center">Currently , there are no deliveries for tomorrow</h2>
+        {{/if}}
+    </table>
+
+
+    {{!-- <br><br><br>
+    <button style="text-align: center; margin-left: 43%;" onclick="myFunction()">Start Delivering!</button> --}}
+
+{{!-- <p id="pp"></p> --}}
+
+
+    <script>
+      function myFunction(){
+        //('/delivery/startDelivery');
+        window.location.href = "/main_s/delivering";
+      }
+//      $('input').attr('checked', false);
+
+//$('input').attr('checked', true);
+
+//$('input[name=box]').is(':checked')
+
+        //:(
+       /* function check(){
+
+        
+          for(j = 0; j < 100000; j++){
+                idName = 'status'+j;
+                
+                
+                document.getElementById('orderid').id = idName;
+                document.getElementById(idName).innerHTML = '{{remarks}}';
+            }
+}*/
+
+      //  document.getElementById('orderid').onload = function checkId(){
+            //console.log('masusk dheckid');
+            //if('{{id}}' == prevId){
+                //document.getElementById('orderid').innerHTML= "{{id}}";
+           //     console.log('masuk if');
+            //}
+            //prevId = '{{id}}';
+            //console.log('aft change');
+        //}
+    </script>
+
+</body>

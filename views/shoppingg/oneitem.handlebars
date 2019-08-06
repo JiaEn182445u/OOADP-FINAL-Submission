@@ -1,0 +1,152 @@
+<html>
+{{#if shopp.quantity}}
+
+{{else}}
+<p class="outofstockp" style="display:absolute;">Out Of Stock</p>
+{{/if}}
+<h3 id="feedbacktitle">{{shopp.itemName}}</h3>
+<link rel="stylesheet" href="/css/cstyle.css">
+<script src="https://kit.fontawesome.com/cab24c7935.js"></script>
+
+<img src="{{shopp.posterURL}}" alt="Poster unavailable"  class="oneitempic">
+<div class="everyonerate">
+Average Rating:
+{{#if feedbackk}}
+{{else}}
+<i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+{{/if}}
+<div id="averagerate"></div>
+Number of customers rated:
+{{nocustomer}}
+</div>
+<script>
+var totalstar=5;
+var crate=parseInt({{average}});
+var leftrate=5-parseInt({{average}});
+var stars=document.createElement("ul");
+  stars.setAttribute("id","stars");
+var ratingstars=document.createElement("div");
+  ratingstars.setAttribute("id","ratingstars");
+    //colourstar.appendChild(stars);
+  for(var g=0;g <crate; g++){
+    var colourstar=document.createElement("i");
+  colourstar.setAttribute("class","fas fa-star");
+    stars.appendChild(colourstar);
+  }
+  for(var c=0;c<leftrate;c++){
+    var nocolourstar=document.createElement("i");
+  nocolourstar.setAttribute("class","far fa-star");
+    stars.appendChild(nocolourstar);
+  }
+
+ratingstars.appendChild(stars);
+var Average=document.getElementById("averagerate");
+Average.appendChild(ratingstars);
+</script>
+
+
+<div class="oneitemallstuff">
+{{shopp.description}}
+<br>
+
+</div>
+<br>
+<br>
+<p style="font-weight: bold; font-size:20px; float:right;">Product Code:{{shopp.itemCode}}</p>
+<br>
+<br>
+<p style="font-weight: bold; font-size:20px; float:right;">Price:${{shopp.price}}</p>
+<br>
+
+{{#if shopp.quantity}}
+
+<div class="addingintocartinfo">
+  In Stock Date and Time:<p style="color:blue;">{{shopp.dateofDelivery}}</p>
+  <br>
+<form action="../addtocartt/{{shopp.id}}" method="post">
+<label class="font-italic" for="quantity">Quantity:</label><br>
+<input type="number" name="quantity" min="1" max={{shopp.quantity}} value="1">
+<br>
+<label class="font-italic" for="remark">Remark:</label><br>
+  <textarea name="remark" rows="3" cols="50" ></textarea>
+
+  <button type="submit">Add to Cart</button>
+</form>
+</div>
+<a class="addfeedback" href="../shop">Back</a>
+		
+{{else}}
+<div class="addingintocartinfo">
+In Stock Date and Time:<p style="color:blue;">{{shopp.dateofDelivery}}</p>
+  <br>
+
+</div>
+{{/if}}
+<div class="otheronlycenter">
+<div class="reviewsession">
+<p style="font-weight:bold; font-size:50px;">Review:</p>
+{{#if feedbackk}}
+
+				{{#each feedbackk}}
+       
+
+{{!-- <script>
+var totalstar=5;
+var crate=parseInt({{rate}});
+var leftrate=5-parseInt({{rate}});
+var stars=document.createElement("ul");
+  stars.setAttribute("id","stars");
+var ratingstars=document.createElement("div");
+  ratingstars.setAttribute("id","ratingstars");
+    //colourstar.appendChild(stars);
+  for(var g=0;g <crate; g++){
+    var colourstar=document.createElement("i");
+  colourstar.setAttribute("class","fas fa-star");
+    stars.appendChild(colourstar);
+  }
+  for(var c=0;c<leftrate;c++){
+    var nocolourstar=document.createElement("i");
+  nocolourstar.setAttribute("class","far fa-star");
+    stars.appendChild(nocolourstar);
+  }
+
+ratingstars.appendChild(stars);
+var displayingfeedback=document.getElementById("displayingfeedback");
+displayingfeedback.appendChild(ratingstars);
+</script> --}}
+
+
+<div id="displayingfeedback">  
+
+
+
+
+
+
+
+
+<div class="reviewprofile">
+      Name:  {{user.name}}
+        {{!-- /\{{CuserId}} --}}
+        {{#if user.profileURL}}
+        <img src="{{user.profileURL}}" alt="Poster unavailable" class="reviewprfoilepic">
+        {{else}}
+<img src="/img/profile.png" alt="Poster unavailable" class="reviewprfoilepic">
+        {{/if}}
+</div>
+<div class="reviewmessage">
+        {{Message}}
+</div>
+        {{#if imgurl}}
+              
+							<img src="{{imgurl}}" alt="Poster unavailable" class="displayreviewpic">
+						
+            {{/if}}
+            </div>
+				{{/each}}
+				{{/if}}
+</div>
+</div>
+
+
+</html>

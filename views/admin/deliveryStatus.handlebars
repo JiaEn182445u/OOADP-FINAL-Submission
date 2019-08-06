@@ -1,0 +1,100 @@
+<link rel="stylesheet" type="text/css" href="/css/del_admin.css">
+
+<body>
+    <h1>Delivery reference</h1>
+    <br>
+    <table class="adDel" align="center">
+        <tr>
+            <th>Item code</th>
+            <th>Description</th>
+            <th>Merchant</th>
+            <th>Qty</th>
+            <th>Reference No.</th>
+            <th>Date sent</th>
+            <th>Arrival status</th>
+        </tr>
+        {{#if forms}}
+        {{#each forms}}
+        <script>
+            var itemCode
+        </script>
+        <form action="/stocks/DStatusUpdate/{{id}}">
+
+
+            <tr>
+
+                <td id="itemCode{{id}}" name="itemCode">{{itemCode}}</td>
+
+                <td name="desc">{{description}}</td>
+                <td>{{merchant}}</td>
+                <td id="quantity">{{quantity}}</td>
+                <td>{{referenceNo}}</td>
+                <td>{{dateofDelivery}}</td>
+                <td id="statusWdate" name="arrivedDate">
+
+                    <div id="puthere{{id}}" style="display: none;"></div>
+                    {{#if status}}
+                    <input type='submit' onclick="myFunction('puthere{{id}}','status{{id}}','itemCode{{id}}')"
+                        id="status{{id}}" value='{{status}}'>
+                    {{else}}
+                    <div>
+                        {{arrivedDate}}
+                    </div>
+
+                    {{/if}}
+                </td>
+            </tr>
+        </form>
+
+        {{/each}}
+        {{/if}}
+    </table>
+</body>
+
+<script>
+
+    //var x = document.getElementById("quantity");
+    //const reference = require("../models/reference.js")
+    //for (j = 0; j < 100; j++) {
+    //  statid = "status" + j;
+    //document.getElementById("status").id = statid;
+    //console.log(statid, "ggggggggggggggggg");
+    //var x = document.getElementById(statid).value; 
+
+
+    //}
+    function myFunction(putword, hidebutton) {
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date + ' ' + time;
+
+        var x = document.getElementById(hidebutton).value;
+        console.log(x);
+        //var itemCode = document.getElementById(getItemCode).innerHTML;
+        //  console.log("1234");
+        //date3.setDate(date3.getDate() + 3);+
+        if (x == "pending") {
+            // console.log(date3)
+            document.getElementById(hidebutton).value = "arrived";
+            document.getElementById(hidebutton).style.display = 'none';
+            document.getElementById(putword).style.display = 'block';
+            document.getElementById(putword).innerHTML = "Arrived " + dateTime;
+
+
+            //var itemmm = document.getElementById("itemCode").innerHTML
+            //console.log(itemmm+"123")
+            //console.log(itemCode)
+            // document.getElementById(date3).innerHTML = date3;
+        }
+
+        //document.getElementById('demo').innerHTML = Date()
+
+        // pass in the item_code as the third argument
+        //var itemm = document.getElementById("itemCode").innerHTML;
+        //console.log(itemm)
+        // make an ajax call to insert into instocks
+    }
+
+
+</script>

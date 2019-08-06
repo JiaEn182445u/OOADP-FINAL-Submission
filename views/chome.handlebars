@@ -1,0 +1,152 @@
+{{#if cuser}}
+<link rel="stylesheet" href="/css/cstyle.css">
+<div class="hometitlebox">
+<h1>Welcome Customer</h1>
+<h1 class="hometitle" style="text-align:center;">About</h1>
+<p class="hometitleinfo">Launched in 2019, Zalora is the number-one online shopping and selling destination in  Singapore. With 300 million SKUs available, Zalora offers the widest range of products in categories for beauty and fashion.
+Focused on delivering an excellent customer experience, it offers comprehensive customer care .</p>
+</div>
+<br>
+<br>
+<br>
+<div class="hometitlebox" style="width:100%;">
+<h1 class="hometitle" style="text-align:center;">Contact us</h1>
+<p class="hometitleinfo" style="text-align:center;">Contact:98293343</p>
+<p class="hometitleinfo" style="text-align:center;">Email:Zalora@gmail.com</p>
+</div>
+<div class="hometitlebox" style="tex-align:center;">
+<button class="addfeedback" style=" margin: 0 auto;display: block;" ><a href="/shopping/shop">Explore</a></button>
+</div>
+{{else}}
+{{#if admin}}
+<h1>Welcome Admin</h1>
+<div class="hometitlebox"style="width:100%;">
+<h1 class="hometitle" style="text-align:center;">Mission
+</h1>
+<p class="hometitleinfo" style="text-align:center; width:100%;" >
+To always serve the best quality product and services and bring smile to our customers’ faces.
+</p>
+</div>
+
+<br>
+<br>
+<div class="hometitlebox" style="width:100%;">
+<h1 class="hometitle" style="text-align:center;">Vision</h1>
+<p class="hometitleinfo" style="text-align:center;"></p>
+<p class="hometitleinfo" style="text-align:center;">Be the company of choice to those who want to bring happiness into their lives.
+</p>
+</div>
+{{else}}
+{{#if muser}}
+<div class="hometitlebox" style="width:100%;">
+<h1 class="hometitle" style="text-align:center;">Welcome</h1>
+<p class="hometitleinfo"style="text-align:center;">
+Merchant
+</p>
+</div>
+{{else}}
+{{#if delMan}}
+
+
+{{/if}}
+<head>
+    {{!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> --}}
+    <link rel="stylesheet" href="/css/del_admin.css">
+    <link rel="stylesheet" href="/css/cstyle.css">
+<style>
+  .size{
+    font-size:90%;
+  }
+</style>
+
+</head>
+
+<body onload='check()'>
+
+ 
+    <br>
+    <h1>Your Deliveries</h1>
+    <br>
+
+    {{!-- <button onclick="tmr()">See Tomorrow</button> --}}
+
+    <script>
+      function tmr(){
+        
+        window.location.href = "/main_s/tomorrow";
+      }
+    </script>
+
+    <h3 style="text-align: center;">Today</h3>
+
+
+    <p id="counting" style="text-align: center;"></p>
+    
+        <br>
+
+    <p style="text-align: center;"><b>Pick Up :</b> Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr</p>
+    <p style="text-align: center;">Singapore 533912</p>
+    <br><br><br>
+    <table style="margin-left: 17%; font-size: 120%;">
+        {{#if order}}
+        <tr>
+            <th class="size" id="bigger">Order No.</th>
+            <th  class="size" >Customer Name</th>
+            <th  class="size" >Item Name</th>
+            <th  class="size" >Item Description</th>
+            {{!-- <th id="pickUpLdeloc">Pick Up Location</th> --}}
+            <th  class="size" >Number of Items Ordered</th>
+            <th  class="size" >Package Collected?</th>
+            {{!-- <th>Ordered Items</th> --}}
+
+        </tr>
+
+        {{#each order}}
+
+        <tr style="width: -50%; text-align:center;" >
+            <td  style="padding: 0.01%;"  id="orderid">{{orderid}}</td>
+            <td>{{payment.payname}}</td>
+            <td style="padding: 0.02%;">{{stockrec.itemName}}</td>
+            <td style="padding: 0.2%;">{{stockrec.description}}</td>
+            {{!-- <td style="padding: 0.2%; " id="pickUpLoc">Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr <p>Singapore 533912</p></td> --}}
+            <td style="padding: 0.01%;">{{oquantity}}</td>
+            <td style="padding: 0.01%;"><input name="box" onclick="makeId()" id="checking" type="checkbox" ></td>
+
+            
+
+            {{!-- <td>{{itemid}}</td> --}}
+        </tr>
+        {{/each}}
+            {{!-- <br><br><br> --}}
+    {{!-- <button style="text-align: center; margin-left: 43%;" onclick="myFunction()">Start Delivering!</button> --}}
+        {{else}}
+        <h2 style="text-align: center">There are no deliveries today</h2>
+        {{/if}}
+        
+    </table>
+    <br><br>
+    <button style="text-align: center; margin-left: 43%;" onclick="myFunction()">Start Delivering!</button>
+
+    {{!-- <br><br><br>
+    <button style="text-align: center; margin-left: 43%;" onclick="myFunction()">Start Delivering!</button> --}}
+
+{{!-- <p id="pp"></p> --}}
+
+
+    <script>
+      function myFunction(){
+        //('/delivery/startDelivery');
+        window.location.href = "/main_s/delivering";
+      }
+    </script>
+<br><br><br>
+{{/if}}
+
+
+{{/if}}
+
+
+{{/if}}

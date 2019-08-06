@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/css/cstyle.css">
+<h3 id="feedbacktitle">WishList</h3>
+{{#if wish}}
+
+<ul>
+    {{#each wish}}
+        <li class="itemboxhome">
+
+
+<a href="../shopping/oneitem/{{id}}">
+<img src="{{stockrec.posterURL}}" alt="Poster unavailable"  class="shoppic shoppic:hover"></a>
+             <div class="allitemhomedetail">
+     <br>      
+<div class="nameandprice">
+{{stockrec.itemName}}
+<div class="price">
+${{stockrec.price}}
+</div>
+</div>
+
+</div>
+
+
+<div class="price">
+<a href="../shopping/deletewishlist/{{id}}" id='cart-item-remove' class="cart-item-remove">
+<i class="fas fa-trash"></i></a>
+</div>
+                <br>
+
+
+
+
+    </li>
+{{/each}}
+</ul>
+
+{{else}}
+
+<p style="text-align:center;">There is nothing in your wishlist</p>
+{{/if}}
+
+

@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="/css/del_admin.css">
+
+<body>
+<h1>Orders</h1>
+    <br>
+    <table class="adDel" align="center">
+        <tr>
+            <th>No.</th>
+            <th>Date and Time of Delivery</th>
+            <th>Customer Name</th>
+            <th>Order No.</th>
+            <th>Shipping Address</th>
+            <th>Region</th>
+            <th id="pickUpLoc">Pick Up Location</th>
+            <th>Delivery details</th>
+            <th>Tracker</th>
+        </tr> 
+        {{#if deliveries}}
+        {{#each deliveries}}
+        <tr>
+
+            <td>{{id}}</td>
+            <td>{{delDate}},<p>{{delPickUpTime}}</p></td>
+            <td>{{cName}}</td>
+            <td>{{cOrderNo}}</td>
+            <td>{{cAddr}},Singapore<p>{{cPostal_Code}}</p></td>
+            <td>{{cRegion}}</td>
+            <td id="pickUpLoc">Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr Singapore 533912</td>
+            <td><a href="/del_details/{{id}}">Approved</a></td>
+            <td>Packing..</td>
+            {{!-- {{/if}} --}}
+            {{/each}}
+            {{/if}}
+        </tr>
+
+    </table>
+</body>

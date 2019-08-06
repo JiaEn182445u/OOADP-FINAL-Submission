@@ -1,0 +1,288 @@
+
+<style>
+	[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 5px solid black;
+}
+</style>
+
+<script>
+function disableCC(){
+if (document.getElementById('Cash').checked) {
+       document.getElementById("cardname").disabled = true;
+	   document.getElementById("cardnumber").disabled = true;
+	   document.getElementById("expiry").disabled = true;
+	   document.getElementById("scode").disabled = true;
+    }
+}
+function ableCC(){
+if (document.getElementById('CreditCard').checked) {
+    document.getElementById("cardname").disabled = false;
+	   document.getElementById("cardnumber").disabled = false;
+	   document.getElementById("expiry").disabled = false;
+	   document.getElementById("scode").disabled = false;
+    }
+}
+ // Takes a credit card string value and returns true on valid number
+function valid_credit_card(value) {
+	
+  // Accept only digits, dashes or spaces
+	if (/[^0-9-\s]+/.test(value)) return false;
+	// The Luhn Algorithm. It's so pretty.
+	let nCheck = 0, bEven = false;
+	value = value.replace(/\D/g, "");
+	for (var n = value.length - 1; n >= 0; n--) {
+		var cDigit = value.charAt(n),
+			  nDigit = parseInt(cDigit, 10);
+		if (bEven && (nDigit *= 2) > 9) nDigit -= 9;
+		nCheck += nDigit;
+		bEven = !bEven;
+	}
+	return (nCheck % 10) == 0;
+}
+function checking(){
+	//var yesorno=false;
+	
+	var cardnum= document.forms["creditcardformpay"]["cardnumber"].value;
+	var exp= document.forms["creditcardformpay"]["expiry"].value;
+	var expfront=parseInt(exp.substring(0, 2));
+	var expback=parseInt(exp.toString().substr(-2));
+	var year=parseInt(new Date().getFullYear().toString().substr(-2));
+	var month=parseInt(new Date().getMonth())+1;
+	//var cardnum= str.replace(" ", "");
+ //alert(document.forms["creditcardformpay"]["CCType"].checked);
+ //alert(document.forms["creditcardformpay"]["MasterCard"].checked);
+ if(document.forms["creditcardformpay"]["MasterCard"].checked==false){
+	 if(document.forms["creditcardformpay"]["Visa"].checked==false){
+		 if(document.forms["creditcardformpay"]["Express"].checked==false){
+		 document.getElementById("appearcc").style.display = "block";
+			return false;
+			}
+	 }
+ }
+ document.getElementById("appearcc").style.display = "none";
+ //document.forms["creditcardformpay"]["American Express"].checked==false &&
+ //document.forms["creditcardformpay"]["Visa"].checked==false
+ //){
+ //}
+
+if(expfront>12){
+	document.getElementById("appearexpiry").style.display = "block";
+			return false;
+}
+else{
+	if(expback<year){
+		document.getElementById("appearexpiry").style.display = "block";
+			return false;
+	}
+	else{
+		if(expback==year){
+			if(expfront<month){
+		document.getElementById("appearexpiry").style.display = "block";
+			return false;
+			}
+	}
+	}
+}
+
+
+	if(document.forms["creditcardformpay"]["CCType"].value=="MasterCard"){
+		if(cardnum.length!=16){
+		
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+		}
+		else{
+			if(cardnum[0]!="5"){
+				
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+	
+			}else{
+					var cango= valid_credit_card(cardnum);
+				return cango;
+			}
+	}
+}
+	if(document.forms["creditcardformpay"]["CCType"].value=="Visa"){
+		if(cardnum.length!=16){
+		
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+		}
+		else{
+			if(cardnum[0]!="4"){
+				
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+			}
+			else{
+				var cango= valid_credit_card(cardnum);
+				return cango;
+			}
+	}
+}
+	if(document.forms["creditcardformpay"]["CCType"].value=="American Express"){
+		if(cardnum.length!=15){
+			
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+		}
+		else{
+			if(cardnum[0]!="3"){
+			
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+			}
+			else{
+				if(cardnum[1]!="4" && cardnum[1]!="7"){
+			
+			document.getElementById("appearcardnum").style.display = "block";
+			return false;
+				}
+				else{
+						var cango= valid_credit_card(cardnum);
+				return cango;
+				}
+			}
+	}
+}
+document.getElementById("appearcardnum").style.display = "none";
+
+if(expfront>12){
+	document.getElementById("appearexpiry").style.display = "block";
+			return false;
+}
+else{
+	if(expback<year){
+		document.getElementById("appearexpiry").style.display = "block";
+			return false;
+	}
+	else{
+		if(expback==year){
+			if(expfront<month){
+		document.getElementById("appearexpiry").style.display = "block";
+			return false;
+			}
+	}
+	}
+}
+//return false;
+}
+</script>
+
+<link rel="stylesheet" href="/css/cstyle.css">
+<h3 id="feedbacktitle">Payment</h3>
+<br>
+<div class="container">
+	<div class="feedbackbox">
+	
+		
+		<form action="../shopping/creditcardpaymentdone" method="post" id="creditcardformpay" onsubmit="return checking()">
+	<p>Please Check if the address you are delivering to is correct.Making changes here will not update the
+		address permentently.To update permentently,please go to profile and update.
+	</p>
+		<div class="form-group">
+			<label class="font-italic" for="payname">Name:</label><br>
+			<textarea class="feedbackuseremail" id="payname" name="payname" rows="1" cols="5" readonly="readonly">{{user.name}}</textarea>
+		</div>
+				<div class="form-group">
+			<label class="font-italic" for="paycontact">Contact Number:</label><br>
+			<textarea class="feedbackuseremail" id="paycontact" name="paycontact" rows="1" cols="5" readonly="readonly">{{user.contact}}</textarea>
+		</div>
+		<div class="form-group">
+			<label class="font-italic" for="payemail">Email:</label><br>
+			<textarea class="feedbackuseremail" id="payemail" name="payemail" rows="1" cols="5" readonly="readonly">{{user.email}}</textarea>
+		</div>
+				<div class="form-group">
+			<label class="font-italic" for="payaddress">Address:</label><br>
+			<textarea class="feedbackuseremail" id="payaddress" name="payaddress" rows="1" cols="5" >{{user.address}}</textarea>
+		</div>
+		<div class="form-group">
+			<label class="font-italic" for="payaddress">Postal Code:</label><br>
+			<textarea class="feedbackuseremail" id="paypostalC" name="paypostalC" rows="1" cols="5" >{{user.postalcode}}</textarea>
+		</div>
+				
+						<div class="form-check form-check-inline">
+							<p class="font-weight-bold text-info" id="appearcc" style="display:none">
+                            Please choose a credit card that you are using.
+                        </p>
+						<br>
+						<br>
+						<br>
+						<label class="font-italic" for="CCType">Credit Card:</label><br>
+						<br>
+							
+							<label class="form-check-label" for="MasterCard">
+								<input class="form-check-input"  type="radio" id="MasterCard" value="MasterCard" name="CCType">
+								<img class="logo" src="/img/mastercard.jpg"><br>
+								</label><br><br>
+
+
+							<label class="form-check-label" for="Visa">
+							<input class="form-check-input"  type="radio" id="Visa" value="Visa" name="CCType">
+							<img class="logo" src="/img/visa.jpg">
+							</label><br><br>
+
+							
+							<label class="form-check-label" for="Express">
+							<input class="form-check-input"  type="radio" id="Express" value="American Express" name="CCType">
+							<img class="logo" src="/img/express.jpg">
+							</label><br><br>
+						</div>
+						<br>
+						
+				 <label for="cardname" class="eachq">Name On Card:</label><br>
+                    <input name="cardname" type="text" id="cardname" required >
+                <br>
+                <br>
+				 <p class="font-weight-bold text-info" id="appearcardnum" style="display:none">
+                            Please enter a valid card number.
+                        </p>
+                <label for="cardnumber" class="eachq">Card Number:</label><br>
+                    <input name="cardnumber" type="text"  id="cardnumber"  title="15/16 digits" required >
+                <br>
+                <br>
+				<p class="font-weight-bold text-info" id="appearexpiry" style="display:none">
+                            Please enter a valid expiry date.
+                        </p>
+                <label for="expiry" class="eachq">Expiry Date:</label><br>
+                    <input type="text" pattern="([0-9]{2})+([/]{1})+([0-9]{2})" title="mm/yy" name="expiry" id="expiry" placeholder="mm/yy" required >
+                <br>
+                <br>
+                <label for="scode" class="eachq">Security Code:</label><br>
+                    <input type="text" name="scode" id="scode" title="3 or 4 digit" pattern=".{3,4}" required >
+                <br>
+                <br>
+	
+	
+           <br><br>
+					
+
+
+  <br><br>
+			
+			
+		
+				
+		</div>
+
+			<br>
+<a class="addfeedback" href="../shopping/paymenttype">Back</a>			<button class="addfeedback" type="submit"  id="creditcardpaying" class="btn btn-primary">Submit
+			</button>
+		</form>
+
+
+		<p id="displaytotalprice">Total:${{Rtotal}}</p>
+	</div>
+</div>

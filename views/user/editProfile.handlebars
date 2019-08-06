@@ -1,0 +1,53 @@
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+
+<body>
+<form action="/user/editProfile/{{user.id}}?_method=PUT" method="post">
+
+<input type="hidden" name="_method" value="PUT">
+<input type="file" id="posterUpload" name="posterUpload" accept="image/png,image/jpeg,image/jpg,image/gif" style="margin-left:35%;"> 
+<br>
+<br>
+<img id="poster" src="/img/profile.png" alt="" class="border img-thumbnail img-fluid"
+                        style="height:25%;width:25%; margin-left:35%;" >
+<div class="font-weight-bold text-danger small" id="posterErr" style="display:none"></div>
+ <div class="allContent">
+     
+{{!-- <input type="file" id="posterUpload" name="posterUpload" accept="image/png,image/jpeg,image/jpg,image/gif"> 
+<div class="font-weight-bold text-danger small" id="posterErr"
+ style="display:none"></div>
+<img id="poster" class = "profImg" src="/img/no-image.jpg" alt="" class="border img-thumbnail img-fluid"
+                        style="height:30%;width:30S%">
+<input id="profImg" type="hidden" name="profImg"> --}}
+
+    {{!—- Hidden field to submit URL of poster to the server --}}
+<input id="posterURL" type="hidden" name="posterURL">
+{{!-- Practical 10 Exercise 01 --}}
+<div class="font-weight-bold text-danger small" id="posterErr" style="display:none"></div>
+<div class="rightContent">
+    <br>
+<table>
+    
+    <tr>
+        <th class="label">Name:</th>
+        <th class="output"><input type="staffName" name="staffName"  class="form-control" required value="{{user.staffName}}"></th>
+    </tr>
+    <tr>
+        <th class="label">Contact No:</th>
+        <th class="output"><input type="phoneNo" name="phoneNo"  class="form-control" required value="{{user.phoneNo}}"></th>
+    </tr>
+    <tr>
+        <th class="label">Email:</th>
+        <th class="output"><input type="email" name="email"  class="form-control" required value="{{user.email}}"></th>
+    </tr>
+    <tr>
+        <th class="label">Designation:</th>
+        <th class="output">{{user.designation}}</th>
+    </tr>
+    <tr><th><a href="/user/profile/:id">Cancel</a></th><th><button>Update Profile</button></th></tr>
+    
+</table>
+</div></div>
+{{!-- {{/each}}
+{{/if}} --}}
+</form>
+</body>

@@ -1,0 +1,87 @@
+<!--.col-	.col-sm-	.col-md-	.col-lg-	.col-xl- -->
+<div class="container">
+    <div class="card card-body">
+        <h3>Create Form</h3>
+        <form action="../form/sendForm" method="post" id="sendForm">
+        <p id="merchant" name="merchant">{{user.name}}</p>
+            <div class="row"> {{!—- row 1--}}
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        {{!—- Title --}}
+                        <label class="font-italic" for="itemName">Item Name</label>
+                        <input class="form-control" id="itemName" name="itemName" rows="1"
+                            onblur="ProperCase('itemName')" value="{{itemName}}">
+                      
+                     
+                    </div>
+                    <div class="form-group">
+                        {{!—- ***New: Starring --}}
+                        {{!-- Practical 09 Exercise 01 --}}
+                        <label class="font-italic" for="price">Price</label>
+                        <input class="form-control" id="price" name="price" rows="1" value="{{Price}}">
+                    </div>
+                    <div class="form-group">
+                        {{!—- ***New: Starring --}}
+                        {{!-- Practical 09 Exercise 01 --}}
+                        <label class="font-italic" for="itemCode">Item Code</label>
+                        <input class="form-control" id="itemCode" name="itemCode" rows="1" value="{{itemCode}}">
+                    </div>
+                    <div class="form-group">
+                        {{!—- ***New: Starring --}}
+                        {{!-- Practical 09 Exercise 01 --}}
+                        <label class="font-italic" for="quantity">Quantity</label>
+                        <input class="form-control" id="quantity" name="quantity" rows="1" value="{{quantity}}">
+                    </div>
+                    
+                    <div class="form-group">
+                        {{!—- Story --}}
+                        <label class="font-italic" for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="7">{{description}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        {{!—- ***New: Starring --}}
+                        {{!-- Practical 09 Exercise 01 --}}
+                        <label class="font-italic" for="referencNo">Reference Number</label>
+                        <input class="form-control" id="referenceNo" name="referenceNo" rows="1" value="{{referenceNo}}">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    {{!-- Practical 10 Exercise 01 --}}
+                    <input type="file" id="posterUpload" name="posterUpload"
+                        accept="image/png, image/jpeg,image/jpg,image/gif">
+                    {{!—- Poster image --}}
+                    <img id="poster" src="/img/no-image.jpg" alt="" class="border img-thumbnail img-fluid"
+                        style="height:95%;width:100%">
+                    {{!—- Hidden field to submit URL of poster to the server --}}
+                    <input id="posterURL" type="hidden" name="posterURL">
+                    {{!-- Practical 10 Exercise 01 --}}
+                    <div class="font-weight-bold text-danger small" id="posterErr" style="display:none"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row"> {{!—- row 2--}}
+                    <div class="col-12 col-sm-5 col-md-5 col-lg-6">
+                        {{!—- Date Release --}}
+                        <label class="font-italic">Date of Delivery</label>
+                        <input id="datepicker" width="200" name="dateofDelivery" value="{{dateofDelivery}}" >
+                    </div>
+                 
+                </div>
+            </div>
+           
+            <br>
+            <button id="butSendForm" type="submit" class="btn btn-primary">Send
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        value: new Date().toLocaleDateString('en-SG'),
+        uiLibrary: 'bootstrap4',
+    });
+    
+}
+</script>

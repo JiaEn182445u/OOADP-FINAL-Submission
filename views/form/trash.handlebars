@@ -1,0 +1,176 @@
+<!--.col-	.col-sm-	.col-md-	.col-lg-	.col-xl- -->
+
+<head>
+	<style>
+		#query {
+			width: 20%;
+			padding: 10px 0;
+			font-size: 16px;
+			color: #2c2727;
+			letter-spacing: 1px;
+			margin-bottom: 30px;
+			border: none;
+			border-bottom: 1px solid #f4b642;
+
+			background: transparent;
+		}
+
+		#search {
+			border: 1px solid #f4b642;
+			background: none;
+			padding: 10px 20px;
+			font-size: 20px;
+			font-family: 'Courier New', Courier, monospace;
+			cursor: pointer;
+			margin: 10px;
+			color: black;
+			transition: 0.8s;
+			position: relative;
+			overflow: hidden;
+			border-radius: 5px;
+
+		}
+
+		#search:hover {
+			color: #f4f142;
+
+		}
+
+		#search::before {
+			content: "";
+			position: :absolute;
+			left: 0;
+			width: 100%;
+			height: 0%;
+			background: #f4b642;
+			z-index: -1;
+			transition: 0.8s;
+			top: 0;
+			border-radius: 50% 50% 0 0;
+		}
+
+		#search:hover::before {
+			height: 180%;
+		}
+
+		.border-primary {
+			border-color: #f4b642 !important;
+		}
+
+		.text-primary {
+			color: #f4b642 !important;
+		} 
+	</style>
+
+</head>
+
+<div class="container">
+	<input id="query"></input>
+	<input id="search" type="button" value="search" />
+	<div class="card card-body">
+		<h3 class="text-primary">Recently Deleted...</h3>
+		<div id="card" class="card border-primary mb-2 w-100 mx-auto">
+
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			$("#search").click(function () {
+				var query = $("#query").val();
+				$.ajax({
+					url: "/form/search/ajax/" + query,
+					type: "GET",
+					success: function (data) {
+						var forms = data.forms;
+						$("#card").html("");
+						$.each(forms, function (index, form) {
+							var row = `
+							<div class="card-header">
+								<h5 class="card-title">${form.itemName}</h5>
+							</div>
+							<div class="card-body">
+								{{!-- Practical 09 Exercise 02 --}}
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-2">
+										<a href="${form.posterURL}" data-title="${form.itemName}" data-toggle="lightbox">
+											<img src="${form.posterURL}" alt="Poster unavailable" class="img-thumbnail img-fluid">
+										</a>
+									</div>
+									<div class="col-sm-12 col-md-12 col-lg-8">
+										<div class="row"> {{!-- subtitles, language... --}}
+											<div class="col-sm-12 col-md-6 col-lg-3">
+												<p class="font-italic">Price</p>
+												<p class="text-info">
+													${form.price}
+												</p>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-4">
+												<p class="font-italic">Item Code</p>
+												<p class="text-info">
+													${form.itemCode}
+												</p>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-2">
+												<p class="font-italic">Quantity</p>
+												<p class="text-info">${form.quantity}</p>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-3">
+												<p class="font-italic">Date of Delivery</p>
+												<p class="text-info">{{ formatDate form.dateofDelivery 'DD/MM/YYYY'}}</p>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12 col-md-6 col-lg-10">
+												<p class="font-italic">Reference Number</p>
+												<p class="text-info">${form.referenceNo}</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-6 col-lg-2">
+										<p class="font-italic"></p>
+							
+										
+										<a href="/form/retrieveForm/${form.id}" class="card-link" data-toggle="confirmation"
+											data-title="Want to recover?">
+											<i class="far fa-trash-alt"></i>
+											Recover
+										</a>
+										<a href="/form/delete/${form.id}" class="card-link" data-toggle="confirmation"
+											data-title="Want to recover?">
+											<i class="far fa-trash-alt"></i>
+											Delete
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="accordion" id="storyAccordion${form.id}">
+								<div class="card-header" id="headingOne${form.id}">
+									<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne${form.id}"
+										aria-expanded="false" aria-controls="collapseOne${form.id}">
+										Story<i class="fas fa-chevron-down"></i>
+									</button>
+
+								</div>
+
+								<div id="collapseOne${form.id}" class="collapse" aria-labelledby="headingOne${form.id}"
+									data-parent="#storyAccordion${form.id}">
+									<div class="card-body">
+										${form.description}
+									</div>
+								</div>
+							</div>
+	
+							`
+							$("#card").append(row);
+						})
+					}
+				})
+			})
+		})
+	</script>
+
+
+
+</div>

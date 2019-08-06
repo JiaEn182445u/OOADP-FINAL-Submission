@@ -1,0 +1,211 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delivery Details</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="/css/del_admin.css">
+    <script src="/path/to/handlebars.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        #readOnlyInput {
+            /* width: 100%; */
+            padding: 7px;
+            background-color: #F3F3F3;
+            border: 1px solid #B0B0B9;
+            max-width: 120%;
+            min-width: 20%;
+            text-align: center;
+        }
+
+        .delTime {
+            padding: 7px;
+            border: 1px solid #B0B0B9;
+            max-width: 120%;
+            min-width: 70%;
+            text-align: center;
+        }
+
+
+        #buttonBack {
+            margin-left: 50%;
+        }
+
+        .detIn {
+            margin-left: 25px;
+        }
+
+        .delInP {
+            padding-left: 25px;
+        }
+
+        #delManList {
+            color: green;
+            padding: 3px 60px 3px 3px;
+            /* text-align: left; */
+        }
+    </style>
+
+</head>
+
+<body onLoad="myFunction()">
+
+    <form action="/main_s/updateDelDetails/{{payments.id}}?_method=PUT" method="post">
+        <div class="container" style="border: 1px solid #ffa500;
+    border-radius: 7px;
+    margin-top: 5%;">
+            <br><br>
+            {{!-- {{#each deliveries}} --}}
+            <h1>Delivery Details</h1>
+            <p id="order-Det" style="    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 1.5em;">Order No.: {{payments.id}}</p>
+            <div class="del-cust" style="margin-left: 15%; width: 25%;">
+                <br>
+                <h3>Customer Details</h3>
+
+                <label>Customer's Name</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.payname}}' readonly />
+                <br>
+                <label>Customer's Shipping Address:</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.payaddress}}' readonly />
+                <br>
+                <label>Postal Code</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.paypostalC}}' readonly />
+                <br>
+                <label>Region</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.cRegion}}' readonly />
+                <br>
+                <label>Customer Email Address</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.payemail}}' readonly />
+                <br>
+                <label>Customer Phone No.</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value='{{payments.paycontact}}' readonly />
+
+            </div>
+
+
+
+
+            <div class="del-detcont" style="    float: right;
+    margin-top: -36%;
+    margin-right: 15%;
+    width: 25%;">
+                <h3>Delivery Details</h3>
+                <label>Pick Up Location:</label>
+                <br>
+                <input class="detIn" id="readOnlyInput"
+                    value="Keppel Logistics @ Tampines Logistics Park, 27 Greenwich Dr" readonly />
+                <br>
+                <label>Postal Code:</label>
+                <br>
+                <input class="detIn" id="readOnlyInput" value="{{payments.paypostalC}}" readonly />
+                <br>
+                <label>Delivery Date</label>
+                <br>
+                <p class="delInP">
+                    <input name="delDate" id="datepicker" width="200" value='{{payments.delDate}}'>
+                    {{!--https://gijgo.com/datepicker/example/bootstrap--}}
+                </p>
+
+                {{!-- <label>Customer Email Address</label>
+            <br>
+            <input id="readOnlyInput" value={{cEmailAddr}} readonly />
+            <br>
+            <label>Customer Phone No.</label>
+            <br>
+            <input id="readOnlyInput" value={{cPhoneNo}} readonly /> --}}
+                <label>Delivery Man</label>
+                <br>
+
+                <input class="detIn" id="readOnlyInput" value='{{payments.delMan}}' readonly />
+
+
+
+
+
+                <br><br>
+            </div>
+            {{!-- {{/each}} --}}
+            <br><br>
+            <button id="buttonBack">Back</button>
+            <button id="buttonUpdate">Update</button>
+            {{!-- <p>{{payments.delMan}}, try</p> --}}
+            <br><br><br>
+        </div>
+        {{!-- {{/if}} --}}
+    </form>
+    <br><br><br><br>
+    {{payments.delPickUpTime}}
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap',
+            format: 'dd/mm/yyyy'
+        });
+
+        /*document.getElementById("buttonBack").onclick = function ggback() {
+            document.getElementById("delManList").value = '{{payments.delMan}}';
+            document.getElementById("delTime").value = '{{payments.delPickUpTime}}';
+            document.getElementById("datepicker").value = '{{payments.delDate}}';
+            //location.href = "delivery/all";
+        };
+        document.getElementById("buttonUpdate").onclick = function updating() {
+            if (confirm("Press a button!")) {
+                //stopped here
+                if ((document.getElementById("delManList").value == '{{payments.delMan}}') && (document.getElementById("delTime").value == '{{payments.delPickUpTime}}') && (document.getElementById("datepicker").value == '{{payments.delDate}}')) {
+                    alert("no changes has been made");
+                    return false;
+                } else {
+                    //document.getElementById("myForm").action = "/updateDelDetails/{{deliveries.id}}?_method=PUT";
+                    return true;
+                };
+            } else {
+                return false;
+            }
+        };*/
+        //idk whats this so comment dulu. i forgot
+        /*var t = document.getElementById("delTime");
+        var valTime = t.options[t.selectedIndex].text;
+        var dm = document.getElementById("delMan");
+        var valDm = dm.options[dm.selectedIndex].text;*/
+
+        document.getElementById("buttonBack").onclick = function ggback() {
+            //document.getElementById("delManList").value = '{{payments.delMan}}';
+            document.getElementById("datepicker").value = '{{payments.delDate}}';
+            //location.href = "/delivery";
+            //window.history.back();
+        };
+
+
+
+
+        document.getElementById("buttonUpdate").onclick = function updating() {
+            if (confirm("Update?")) {
+                /*stopped here*/
+                if ((document.getElementById("datepicker").value == '{{payments.delDate}}')) {
+                    alert("No changes has been made");
+                    return false;
+                } else {
+                    /*document.getElementById("myForm").action = "/updateDelDetails/{{deliveries.id}}?_method=PUT";*/
+                    return true;
+                };
+
+            } else {
+
+                return false;
+            }
+
+        };
+    </script>
+
+
+</body>

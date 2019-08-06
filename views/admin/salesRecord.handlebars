@@ -1,0 +1,23 @@
+<canvas id="myChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'pie',
+
+    // The data for our dataset
+    data:  {
+        labels: ['Company 1', 'Company 2', 'Company 3'],
+        datasets: [{
+            label: 'Merchants Overall Sales Record',
+            backgroundColor: ['rgb(241, 148, 138)','rgb(248, 196, 113)','rgb(247, 220, 111)'],
+            borderColor: ['rgb(241, 148, 138)','rgb(248, 196, 113)','rgb(247, 220, 111)'],
+            data: [4, 10, 5]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>

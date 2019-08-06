@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/css/cstyle.css">
+<div class="onlycenter">
+{{#if user.profileURL}}
+	<img class="picinprofile" src="{{user.profileURL}}"></li>
+    {{else}}	
+    <img class="picinprofile" src="/img/profile.png"></li>
+    {{/if}}
+</div>
+<div class="otheronlycenter">
+<div class="profileinfo" >
+<p class="centerforever"><b>Name:</b></p>
+<p class="centerforever">{{ user.name }}</p>
+<p class="centerforever"><b>Email:</b></p>
+<p class="centerforever">{{user.email}}</p>
+<p class="centerforever"><b>Address:</b></p>
+<p class="centerforever">{{user.address}}</p>
+<p class="centerforever"><b>Postal Code:</b></p>
+<p class="centerforever">{{ user.postalcode }}</p>
+<a class="addfeedback" href="../profileEdit">Update profile</a>
+<br>
+</div>
+</div>
+</div>
+<br>
+<h1 class="centerforever" id="feedbacktitle">Order History</h1>
+<br>
+<div class="otheronlycenter">
+{{#if history}}
+<ul>
+{{#each history}}
+    <li class="itemboxcart">
+<img src="{{posterURL}}" alt="Poster unavailable"  class="cartpic">
+             <div class="allitemorderdetail">
+{{itemName}}
+${{price}}
+<p class="quantityincart">
+X{{oquantity}}</p>
+</div>
+Remarks:
+{{#if remark}}
+<div class="remarkincart">
+{{remark}}
+</div>
+{{else}}
+<div class="remarkincart">
+No remarks
+</div>
+{{/if}}
+<div class="dateandtimeinorder">
+    <p class="datetimecolour">Date:{{date}} Time:{{time}}</p>
+</div>
+<br>
+    </li>
+{{/each}}
+</ul>
+{{/if}}
+</div>
+
+

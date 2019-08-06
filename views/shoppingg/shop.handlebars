@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/cstyle.css">
+<h3 id="feedbacktitle">Zalora Store</h3>
+{{#if shopp}}
+<ul>
+    {{#each shopp}}
+    {{#if quantity}}
+
+<li class="itemboxhome">
+<a href="../shopping/oneitem/{{id}}"><img src="{{posterURL}}" alt="Poster unavailable"  class="shoppic shoppic:hover"></a>
+ <div class="allitemhomedetail">
+     <br>      
+<div class="nameandprice">
+{{itemName}}
+<div class="price">
+${{price}}
+</div>
+</div>
+
+
+<a href="../shopping/addtowishlist/{{id}}" >Add To Wishlist</a>
+{{!-- 
+<button onclick="get_oneitem({{id}})"><a href="../shopping/oneitem/{{id}}">View</a></button> --}}
+<a href="../shopping/addtocart/{{id}}"><i class="fas fa-shopping-cart"></i>Add to cart</a>
+                <br>
+</div>
+
+
+
+
+
+
+    </li>
+
+
+{{else}}
+
+
+<li class="itemboxhome">
+
+
+<a href="../shopping/oneitem/{{id}}"><img src="{{posterURL}}" alt="Poster unavailable"  class="shoppic shoppic:hover"></a>
+       
+							
+					
+             <div class="allitemhomedetail">
+
+
+<p class="outofstockp">Out Of Stock</p>
+
+
+<a href="../shopping/addtowishlist/{{id}}" >Add To Wishlist</a>
+
+</div>
+
+
+
+
+
+
+    </li>
+
+
+
+  
+
+{{/if}}
+
+
+{{/each}}
+</ul>
+
+{{else}}
+
+nothing
+{{/if}}
+
+
+{{!-- <form  method="post" action="../shopping/addtocart/{{id}}">
+<a href="../shopping/oneitem/{{id}}">View</a>
+<li class="itemboxhome">
+
+<div class="allitemhome">
+
+        <div class="allfoodpiccontain">
+             <div class="allitemhomedetail">
+                 <br>
+{{name}}
+<br>
+{{price}}
+<br>
+
+
+
+ <button type="submit">Add to Cart</button>
+</form> --}}

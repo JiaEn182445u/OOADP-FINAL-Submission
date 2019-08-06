@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="/css/del_admin.css">
+
+<body>
+
+<div class="container">
+<div class="input-group">
+	<input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
+      </span>
+</div>
+</div>
+
+<h1>Instocks</h1>
+    <br>
+    <table class="adDel" align="center">
+        <tr>
+            <th>Item code</th>
+            <th>Description</th>
+            <th>Merchant</th>
+            <th>Qty Instock</th>
+            <th>Last Updated</th>
+        </tr> 
+        {{#if stockrecs}}
+        {{#each stockrecs}}
+        <tr>
+
+            <td>{{itemCode}}</td>
+            <td>{{description}}</td>
+            <td>{{merchant}}</td>
+            <td>{{quantity}}</td>
+            <td>{{arrivedDate}}</td>
+            
+        </tr>
+            {{/each}}
+            {{/if}}
+    </table>
+</body>

@@ -1,0 +1,72 @@
+h1{
+    text-align: center;
+}
+
+.feedbackTable{
+    /* border: 2px solid #ffa500; */
+    /* border-collapse: collapse; */
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    width: 80%;
+    height: 10%;
+    padding-top: -30%;
+    text-align: center;
+    font-size: 11px;
+}
+
+td{
+    /* border: 2px solid #ffa500; */
+    /* border-collapse: collapse; */
+    font-family: 'Times New Roman', Times, serif;
+    /* padding-left: -20%;
+    padding-right: -20%; */
+    /* font-size: 11px; */
+    width: 25em;
+}
+
+.feedbackA
+{
+    margin-left: 8em;
+}
+
+#forrate{
+    float:right;
+    padding:0 90px;
+    font-size: 20px;
+    }
+    
+    .rate {
+        float: right;
+        height: 46px;
+        padding: 0 10px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .rate:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:30px;
+        color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+    .rate > input:checked ~ label {
+        color: #ffc700;    
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;  
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }

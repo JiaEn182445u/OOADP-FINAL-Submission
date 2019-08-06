@@ -1,0 +1,56 @@
+.box-container 
+{
+    width: 30em;
+    border: 1px solid grey;
+    padding: 20px 80px;
+    margin: auto;
+    margin-top:150px;
+    border-radius: 15px;
+}
+
+.text-center
+{
+    font-size: 3em;
+    text-align: center;
+}
+
+.form-group
+{
+    padding: 5px 0px;
+    margin: 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+
+.submit
+{
+width:100%;
+background-color: #FCCA46;
+transition: 0.3s;
+border-radius: 3px;
+border: none;
+cursor: pointer;
+color:white;
+font-size: 16px;
+font-weight:bold;
+padding: 12px 28px;
+}
+
+.submit:hover
+{
+    background-color: orange;
+    color: white;
+    /* opacity: 0.8; */
+}
+
+.form-control
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

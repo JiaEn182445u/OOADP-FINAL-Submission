@@ -1,0 +1,47 @@
+th{
+    /* border: 2px solid #ffa500; */
+    /* border-collapse: collapse; */
+    font-family: 'Times New Roman', Times, serif;
+    /* padding-left: -20%;
+    padding-right: -20%; */
+    /* font-size: 11px; */
+    width: 20em;
+}
+
+.label
+{
+text-align:right;
+padding-right: 50px;
+}
+
+tr
+{
+    height:50px;
+}
+
+.output
+{
+    text-align: left;
+    /* background-color:grey; */
+}
+
+.profImg
+{
+    /* width: 8em;
+    height: 8em; */
+    padding-top: 10em;
+    padding-left:5em;
+    position:absolute;
+}
+
+table
+{
+    float:left;
+    padding-left: 20em;
+    padding-top: 10em;
+}
+
+.rightContent
+{
+    position:relative;
+}

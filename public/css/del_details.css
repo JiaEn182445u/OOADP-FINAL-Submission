@@ -1,0 +1,64 @@
+.container{
+    border: 1px solid #ffa500;
+    border-radius: 7px;
+    margin-top: 5%;
+}
+
+.del-cust{
+    margin-left: 15%;
+    /* margin-top: 10%; */
+    /* border: 2px solid black; */
+    width: 25%;
+}
+
+.del-detcont{
+    float: right;
+    margin-top: -36%;
+    margin-right: 15%;
+    /* border: 2px solid red; */
+    width: 25%;
+}
+
+
+#order-Det{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#readOnlyInput{
+    /* width: 100%; */
+    padding: 7px;
+    background-color: #F3F3F3;
+    border: 1px solid #B0B0B9;
+    max-width: 120%;
+	min-width: 20%;
+    text-align: center;
+}
+
+.delTime{
+    padding: 7px;
+    border: 1px solid #B0B0B9;
+    max-width: 120%;
+	min-width: 70%;
+    text-align: center;    
+}
+
+
+#buttonBack{
+    margin-left: 50%;
+}
+
+.detIn{
+    margin-left: 25px;
+}
+
+.delInP{
+    padding-left: 25px;
+}
+
+#delManList{
+    color: green;
+    padding: 3px 60px 3px 3px;  
+    /* text-align: left; */
+} 

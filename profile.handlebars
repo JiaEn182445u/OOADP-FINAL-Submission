@@ -1,0 +1,46 @@
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+
+<body>
+{{!-- <input type="file" id="posterUpload" name="posterUpload" accept="image/png,
+ image/jpeg,image/jpg,image/gif"> --}}
+ <div class="allContent" style="float=left;">
+{{!-- <h1><img class="profImg" src="https://oakliquorcabinet.com/assets/images/avatars/no-avatar.png"></h1> --}}
+{{!-- <img id="poster" class="profImg" src="/img/no-image.jpg" alt="" class="border img-thumbnail img-fluid"
+                        style="height:30%;width:30S%"> --}}
+
+{{#if user.posterURL}}
+	<img style="float=left;" class="picinprofile" src="{{user.posterURL}}"></li>
+    {{else}}	
+    <img style="float=left;" class="picinprofile" src="/img/profile.png"></li>
+    {{/if}}
+{{!-- {{#if users}}
+{{#each users}}   --}}
+<div class="rightContent" style="float:right;">
+<table>
+    
+    <tr>
+        <th class="label">Name:</th>
+        <th class="output">{{user.staffName}}</th>
+    </tr>
+    <tr>
+        <th class="label">Contact No:</th>
+        <th class="output">{{user.phoneNo}}</th>
+    </tr>
+    <tr>
+        <th class="label">Email:</th>
+        <th class="output">{{user.email}}</th>
+    </tr>
+    <tr>
+        <th class="label">Designation:</th>
+        <th class="output">Admin</th>
+    </tr>
+    <tr><th><a href = "/user/editProfile/:id"> Update Profile</a></th><th><a href="/user/changePassword/{{user.id}}">Change account password</a></th></tr>
+    
+</table>
+</div></div>
+{{!-- {{/each}}
+{{/if}} --}}
+</body>
+    
+
+

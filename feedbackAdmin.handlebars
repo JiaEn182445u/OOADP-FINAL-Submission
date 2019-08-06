@@ -1,0 +1,109 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/feedbackA.css">
+
+{{#if feedbacks}}
+<div class="container">
+  <div class="card card-body">
+    <h1 class="text-primary">Feedbacks</h1>
+    <br>
+    {{#each feedbacks}}
+    <div class="card border-primary mb-2 w-100 mx-auto">
+      {{!-- <table class="feedbackA" align="center"> --}}
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-2">
+
+            <p1 class="rate"></p1>
+            <input type="hidden" id="tryyid" value={{id}}>
+            <span id="stars{{id}}">{{rate}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-2">
+            {{DropdownSType}}
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-1">
+            {{DropdownPorS}}
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-7">
+            {{productcode}}
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-2">
+            <p1> 05-08-19</p1>
+          </div>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-2">
+            {{emailfeedback}}
+          </div>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            {{Message}}
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <img src="{{imgurl}}">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      {{!-- </table> --}}
+      <br>
+      <br>
+    </div>
+
+    {{/each}}
+  </div>
+  {{else}}
+                <table class="adDel">
+                    <div style="font-weight: bold; text-align:center;"> There are no feedbacks currently</div>
+                </table>
+  {{/if}}
+</div>
+<script>
+  var getrateid = document.getElementById('tryyid').value;
+  var corrid = "stars" + getrateid
+  var x = document.getElementById(corrid).innerHTML
+  document.getElementById(corrid).innerHTML = getStars(x);
+
+  function getStars(rating) {
+
+    // Round to nearest half
+    rating = Math.round(rating * 2) / 2;
+    let output = [];
+
+    // Append all the filled whole stars
+    for (var i = rating; i >= 1; i--)
+      output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+    // If there is a half a star, append it
+    if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+    // Fill the empty stars
+    for (let i = (5 - rating); i >= 1; i--)
+      output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+    return output.join('');
+
+  }
+</script>

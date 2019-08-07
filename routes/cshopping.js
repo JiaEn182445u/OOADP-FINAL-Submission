@@ -1076,40 +1076,40 @@ cart.findAll(
 
 		
 		//Syahiirah Codes
-		// dateSet()
+		dateSet()
 				
-		// 		region = doRegion(paypostalC);
-		// 		console.log("aft payment");
-		// 		idSort = 1;
-		// 		sortDel.findOne({
-		// 			where: {
-		// 				// regionAssigned: region,
-		// 				id: idSort
-		// 			}
-		// 		}).then((sort) => {
+				region = doRegion(paypostalC);
+				console.log("aft payment");
+				idSort = 1;
+				sortDel.findOne({
+					where: {
+						// regionAssigned: region,
+						id: idSort
+					}
+				}).then((sort) => {
 
 
-		// 			console.log(region);
-		// 			console.log('aft sort');
-		// 			console.log(sort, 'test')
-		// 			// checksortDel(sort, region)
-		// 			let delDate = dateDel;
-		// 			if (sort == null) {
-		// 				console.log('masuk null')
-		// 				createSort(delDate, sort, paymenttt, idSort, region)
-		// 				// sortDel.findOne({}).then((sort2)=>{
-		// 				// 	console.log(sort2);
-		// 				//     insertSort(sort2,region,paymenttt)
-		// 				// })
-		// 				// if (err) throw err
+					console.log(region);
+					console.log('aft sort');
+					console.log(sort, 'test')
+					// checksortDel(sort, region)
+					let delDate = dateDel;
+					if (sort == null) {
+						console.log('masuk null')
+						createSort(delDate, sort, paymenttt, idSort, region)
+						// sortDel.findOne({}).then((sort2)=>{
+						// 	console.log(sort2);
+						//     insertSort(sort2,region,paymenttt)
+						// })
+						// if (err) throw err
 
 
-		// 			} else {
-		// 				wee = 1;
-		// 				console.log('masuk tak nullllll')
-		// 				insertSort(delDate, sort, paymenttt, idSort, wee, region)
+					} else {
+						wee = 1;
+						console.log('masuk tak nullllll')
+						insertSort(delDate, sort, paymenttt, idSort, wee, region)
 
-		// 			}
+					}
 					//end of Syahiirah's codes
 
 		cart.findAll(
@@ -1263,7 +1263,7 @@ cart.findAll(
 			// 			insertSort(delDate, sort, paymenttt, idSort, wee, region)
 
 			// 		}
-	//})
+	})
 })
 
 		;
